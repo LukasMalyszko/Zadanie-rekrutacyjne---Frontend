@@ -24,6 +24,7 @@ $icon-size: 24px;
 $icon-size-lg: 48px;
 
 // Font sizes
+$font-size-sm: 12px;
 $font-size-base: 16px;
 $font-size-lg: 18px;
 $font-size-xl: 32px;
@@ -34,10 +35,11 @@ $font-weight-semibold: 600;
 $font-weight-bold: 700;
 
 // Line heights
+$line-height-sm: 16px;
 $line-height-base: 1.5;
 $line-height-headings: 1.2;
 $line-height-xl: 40px;
-$line-height-input: 24px;
+$line-height-l: 24px;
 
 // Transition
 $transition-base: 0.2s ease-in-out;
