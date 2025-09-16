@@ -241,8 +241,6 @@ a:hover {
 .container {
   margin-right: auto;
   margin-left: auto;
-  padding-right: 16px;
-  padding-left: 16px;
   width: 100%;
 }
 @media (min-width: 799px) {
@@ -1039,6 +1037,9 @@ a:hover {
   }
 }
 
+.scoreboard {
+  max-width: 1140px;
+}
 .scoreboard__header {
   display: flex;
   flex-direction: column;
@@ -1057,11 +1058,12 @@ a:hover {
   line-height: 40px;
 }
 .scoreboard__search {
+  box-sizing: border-box;
   border: 1px solid #cbd5e1;
-  border-radius: 4px;
+  border-radius: 8px;
   width: 100%;
   z-index: 1;
-  padding: 8px 16px;
+  padding: 7px 16px;
   font-size: 16px;
   line-height: 24px;
   border-radius: 8px;
@@ -1071,11 +1073,20 @@ a:hover {
   border-color: #007bff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
-.scoreboard__decor-right {
+.scoreboard .decor {
   position: absolute;
-  top: 0;
-  right: 0;
   z-index: -1;
+  top: 0;
+}
+.scoreboard__decor-left {
+  left: 0;
+}
+.scoreboard__decor-mid {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.scoreboard__decor-right {
+  right: 0;
 }
 .scoreboard__content {
   max-height: 400px;

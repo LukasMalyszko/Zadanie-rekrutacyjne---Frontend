@@ -9,8 +9,8 @@
 .container {
   margin-right: auto;
   margin-left: auto;
-  padding-right: $flexboxgrid-outer-margin;
-  padding-left: $flexboxgrid-outer-margin;
+  // padding-right: $flexboxgrid-outer-margin;
+  // padding-left: $flexboxgrid-outer-margin;
   width: 100%;
   @include make-container-max-widths();
 }
