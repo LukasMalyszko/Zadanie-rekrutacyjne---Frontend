@@ -1058,7 +1058,15 @@ a:hover {
   line-height: 40px;
 }
 .scoreboard__search {
-  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+}
+.scoreboard__search:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+.scoreboard__search-input {
   border: 1px solid #cbd5e1;
   border-radius: 8px;
   width: 100%;
@@ -1068,10 +1076,13 @@ a:hover {
   line-height: 24px;
   border-radius: 8px;
 }
-.scoreboard__search:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+.scoreboard__search-icon {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  fill: #cbd5e1;
 }
 .scoreboard .decor {
   position: absolute;
@@ -1087,14 +1098,6 @@ a:hover {
 }
 .scoreboard__decor-right {
   right: 0;
-}
-.scoreboard__content {
-  max-height: 400px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 10px;
-  background-color: #f9f9f9;
 }
 
 /*# sourceMappingURL=style.css.map */

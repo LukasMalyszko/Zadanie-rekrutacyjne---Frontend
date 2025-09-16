@@ -14,13 +14,27 @@
 				<div class="scoreboard">
 					<div class="scoreboard__header">
 						<div class="scoreboard__title">Premier League</div>
-						<input type="text" class="scoreboard__search" placeholder="Search for a team" />
+						<div class="scoreboard__search">
+							<input type="text" class="scoreboard__search-input" placeholder="Search for a team" />
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="scoreboard__search-icon" viewBox="0 0 16 16">
+								<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+							</svg>
+						</div>
 						<img src="assets/svg/circle-left.svg" alt="" class="scoreboard__decor-left decor" />
 						<img src="assets/svg/circle-mid.svg" alt="" class="scoreboard__decor-mid decor" />
 						<img src="assets/svg/circle-right.svg" alt="" class="scoreboard__decor-right decor" />
 					</div>
 					<div class="scoreboard__content">
-						<!-- Content loaded with JS -->
+						<div class="scoreboard__tile">
+							<div class="scoreboard__skeleton">
+								<div class="scoreboard__skeleton-rank skeleton"></div>
+								<div class="scoreboard__skeleton-badge skeleton"></div>
+								<div class="scoreboard__skeleton-name skeleton"></div>
+								<div class="scoreboard__skeleton-bar skeleton"></div>
+								<div class="scoreboard__skeleton-matches skeleton"></div>
+								<div class="scoreboard__skeleton-points skeleton"></div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
