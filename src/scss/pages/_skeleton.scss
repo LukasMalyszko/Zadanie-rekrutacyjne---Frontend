@@ -6,11 +6,10 @@
   &__side {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 18px;
   }
 
   &__element {
-    background-color: $gray-100;
     border-radius: $border-radius;
     position: relative;
     overflow: hidden;
