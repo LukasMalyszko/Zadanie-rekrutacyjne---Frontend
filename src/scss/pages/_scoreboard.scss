@@ -1,5 +1,5 @@
 .scoreboard {
-  max-width: 1140px;
+
   &__header {
     display: flex;
     flex-direction: column;
@@ -23,12 +23,6 @@
   &__search {
     position: relative;
     width: 100%;
-
-    &:focus {
-      outline: none;
-      border-color: #007bff;
-      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    }
   }
 
   &__search-input {
@@ -40,7 +34,7 @@
     font-size: $font-size-base;
     line-height: $line-height-input;
     border-radius: $border-radius-sm;
-    }
+  }
 
   &__search-icon {
     position: absolute;

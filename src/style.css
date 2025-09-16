@@ -1037,9 +1037,6 @@ a:hover {
   }
 }
 
-.scoreboard {
-  max-width: 1140px;
-}
 .scoreboard__header {
   display: flex;
   flex-direction: column;
@@ -1060,11 +1057,6 @@ a:hover {
 .scoreboard__search {
   position: relative;
   width: 100%;
-}
-.scoreboard__search:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 .scoreboard__search-input {
   border: 1px solid #cbd5e1;
