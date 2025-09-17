@@ -1143,6 +1143,25 @@ a:hover {
   font-weight: 600;
   line-height: 24px;
 }
+.scoreboard__bar {
+  width: 226px;
+  height: 4px;
+  border-radius: 8px;
+  display: flex;
+  overflow: hidden;
+}
+.scoreboard__bar span {
+  height: 100%;
+}
+.scoreboard__bar .wins {
+  background-color: #0ebca7;
+}
+.scoreboard__bar .draws {
+  background-color: #94a3b8;
+}
+.scoreboard__bar .losses {
+  background-color: #f45b69;
+}
 .scoreboard__footer {
   display: flex;
   margin-top: 8px;

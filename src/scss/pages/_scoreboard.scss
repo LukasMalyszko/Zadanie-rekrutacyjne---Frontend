@@ -122,6 +122,30 @@
     font-weight: $font-weight-semibold;
     line-height: $line-height-l;
   }
+
+  &__bar {
+    width: 226px;
+    height: 4px;
+    border-radius: $border-radius-sm;
+    display: flex;
+    overflow: hidden;
+
+    span {
+      height: 100%;
+    }
+
+    .wins {
+      background-color: $wins;
+    }
+
+    .draws {
+      background-color: $draws;
+    }
+
+    .losses {
+      background-color: $losses;
+    }
+  }
   
   &__footer {
     display: flex;

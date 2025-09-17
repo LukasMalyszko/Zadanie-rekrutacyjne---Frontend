@@ -48,7 +48,7 @@ class App {
               <div class="scoreboard__name">${team.strTeam}</div>
           </div>
           <div class="scoreboard__side">
-              <div class="scoreboard__bar">${team.intWin} ${team.intLoss} ${team.intDraw}</div>
+              <div class="scoreboard__bar"><span class="wins"></span> <span class="draws"></span> <span class="losses"></span></div>
               <div class="scoreboard__bar-detail">W:${team.intWin} D:${team.intDraw} L:${team.intLoss}</div>
               <div class="scoreboard__points">${team.intPoints} PTS</div>
           </div>
@@ -69,8 +69,24 @@ class App {
         </div>
 
     `;
+      this.showBar(team);
       this.scoreboardContent.appendChild(tile);
     }
+  }
+
+  showBar(team) {
+    const bar = document.querySelector('.scoreboard__bar');
+    const wins = bar.querySelector('.wins');
+    const draws = bar.querySelector('.draws');
+    const losses = bar.querySelector('.losses');
+    const total = team.intPlayed;
+    const winsPercent = (team.intWin / total) * 100;
+    const drawsPercent = (team.intDraw / total) * 100;
+    const lossesPercent = (team.intLoss / total) * 100;
+
+    wins.style.width = `${winsPercent}%`;
+    draws.style.width = `${drawsPercent}%`;
+    losses.style.width = `${lossesPercent}%`;
   }
 
   async fetchData() {
