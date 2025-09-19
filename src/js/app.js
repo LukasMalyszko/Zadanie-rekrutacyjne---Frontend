@@ -54,22 +54,23 @@ class App {
           </div>
         </div>
         <div class="scoreboard__footer">
-          <div class="scoreboard__form">
-            Form: ${team.strForm}
+          <div class="scoreboard__form footer-item">
+            Form: <div class="scoreboard__form-view"></div>
           </div>
-          <div class="scoreboard__goals">
+          <div class="scoreboard__goals footer-item">
             Goals for: ${team.intGoalsFor}
           </div>
-          <div class="scoreboard__goals">
+          <div class="scoreboard__goals footer-item">
             Goals against: ${team.intGoalsAgainst}
           </div>
-          <div class="scoreboard__goals">
+          <div class="scoreboard__goals footer-item">
             Goals difference: ${team.intGoalDifference}
           </div>
         </div>
 
     `;
       this.showBar(team);
+      this.colorForm(team);
       this.scoreboardContent.appendChild(tile);
     }
   }
@@ -81,6 +82,17 @@ class App {
       const value = [team.intWin, team.intDraw, team.intLoss][i];
       const el = bar.querySelector(`.${type}`);
       if (el) el.style.width = `${(value / total) * 100}%`;
+    });
+  }
+
+  colorForm(team) {
+    const formView = document.querySelector('.scoreboard__form-view');
+    const teamForm = team.strForm.split('').reverse();
+    teamForm.forEach((char) => {
+      const span = document.createElement('span');
+      span.className = (char === 'W') ? 'wins' : (char === 'D') ? 'draws' : 'losses';
+      span.textContent = char;
+      formView.appendChild(span);
     });
   }
 

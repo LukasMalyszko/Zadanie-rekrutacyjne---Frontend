@@ -963,8 +963,8 @@ a:hover {
   }
 }
 .icon {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
 }
 .icon--lg {
   width: 48px;
@@ -1176,7 +1176,7 @@ a:hover {
 }
 .scoreboard__points {
   background-color: #2951f7;
-  border-radius: 16px;
+  border-radius: 8px;
   padding: 8px 16px;
   font-size: 18px;
   font-weight: 700;
@@ -1192,20 +1192,36 @@ a:hover {
   gap: 4px;
   padding: 8px 16px;
 }
-.scoreboard__footer div {
+.scoreboard__footer .footer-item {
   background-color: #ebefff;
   font-size: 12px;
   line-height: 16px;
   padding: 4px 8px;
   border-radius: 8px;
+  height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .scoreboard__form {
+  gap: 10px;
+  max-width: 340px;
+  width: 100%;
+}
+.scoreboard__form-view {
+  display: flex;
+  gap: 4px;
+}
+.scoreboard__form-view span {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  max-width: 340px;
-  width: 100%;
 }
 
 .skeleton {
