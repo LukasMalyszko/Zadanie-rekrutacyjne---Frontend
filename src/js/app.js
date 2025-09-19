@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 class App {
   constructor() {
-    this.scoreboardContent = document.querySelector(".scoreboard__content");
+    this.scoreboardContent = document.querySelector(".scoreboard");
   }
 
   renderSkeletonTiles(count = 5) {
