@@ -38,7 +38,10 @@ class App {
   renderTable(teams) {
     this.scoreboardContent.innerHTML = "";
 
-    if (!teams.length) {
+    if (!teams) {
+      this.renderErrorMessage();
+      return;
+    } else if (!teams.length) {
       this.renderNoResultsMessage();
       return;
     }
@@ -136,6 +139,14 @@ class App {
     msg.className = "scoreboard__tile no-results";
     msg.innerHTML = `<div class="no-results__image"><img src="assets/svg/soccer-icon.svg" alt="No results"></div>
       <div class="no-results__message">No teams found matching "${this.searchInput.value}"</div>`;
+    this.scoreboardContent.appendChild(msg);
+  }
+
+  renderErrorMessage() {
+    const msg = document.createElement("div");
+    msg.className = "scoreboard__tile no-results";
+    msg.innerHTML = `<div class="no-results__image"><img src="assets/svg/error-icon.svg" alt="Error"></div>
+      <div class="no-results__message">There was a problem. Please try again later.</div>`;
     this.scoreboardContent.appendChild(msg);
   }
 
