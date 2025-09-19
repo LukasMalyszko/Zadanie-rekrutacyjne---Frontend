@@ -1043,6 +1043,11 @@ a:hover {
   gap: 15px;
   margin-bottom: 20px;
 }
+.scoreboard .ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .scoreboard__tile {
   background-color: #fff;
   border-radius: 16px;
@@ -1103,6 +1108,7 @@ a:hover {
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
+  max-width: 250px;
 }
 .scoreboard__bar {
   width: 226px;
@@ -1150,6 +1156,9 @@ a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.scoreboard__footer .label {
+  max-width: 150px;
 }
 .scoreboard__form {
   gap: 10px;

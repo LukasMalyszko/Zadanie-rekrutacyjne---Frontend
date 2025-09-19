@@ -4,6 +4,12 @@
   gap: 15px;
   margin-bottom: 20px;
 
+  .ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   &__tile {
     background-color: $white;
     border-radius: $border-radius;
@@ -75,6 +81,7 @@
     font-size: $font-size-base;
     font-weight: $font-weight-semibold;
     line-height: $line-height-l;
+    max-width: 250px;
   }
 
   &__bar {
@@ -128,6 +135,10 @@
       justify-content: center;
       align-items: center;
     }
+
+    .label {
+      max-width: 150px;
+    }
   }
 
   &__form {
@@ -166,5 +177,7 @@
       line-height: $line-height-l;
       color: $blue-600;
     }
+
+    
   }
 }

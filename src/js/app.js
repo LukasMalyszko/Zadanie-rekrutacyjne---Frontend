@@ -45,7 +45,7 @@ class App {
               <div class="scoreboard__badge">
                 <img src="${team.strBadge}" alt="${team.strTeam} badge">
               </div>
-              <div class="scoreboard__name">${team.strTeam}</div>
+              <div class="scoreboard__name ellipsis">${team.strTeam}</div>
           </div>
           <div class="scoreboard__side right-align">
               <div class="scoreboard__bar"><span class="wins"></span> <span class="draws"></span> <span class="losses"></span></div>
@@ -55,16 +55,16 @@ class App {
         </div>
         <div class="scoreboard__footer">
           <div class="scoreboard__form footer-item">
-            Form: <div class="scoreboard__form-view"></div>
+            <span class="label ellipsis">Form:</span> <div class="scoreboard__form-view"></div>
           </div>
           <div class="scoreboard__goals footer-item">
-            Goals for: <span class="score">${team.intGoalsFor}</span>
+            <span class="label ellipsis">Goals for:</span> <span class="score">${team.intGoalsFor}</span>
           </div>
           <div class="scoreboard__goals footer-item">
-            Goals against: <span class="score">${team.intGoalsAgainst}</span>
+            <span class="label ellipsis">Goals against:</span> <span class="score">${team.intGoalsAgainst}</span>
           </div>
           <div class="scoreboard__goals footer-item">
-            Goals difference: <span class="score">${team.intGoalDifference}</span>
+            <span class="label ellipsis">Goals difference:</span> <span class="score">${team.intGoalDifference}</span>
           </div>
         </div>
 
