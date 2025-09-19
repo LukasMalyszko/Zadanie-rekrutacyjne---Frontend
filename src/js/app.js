@@ -39,10 +39,7 @@ class App {
     this.scoreboardContent.innerHTML = "";
 
     if (!teams.length) {
-      const msg = document.createElement("div");
-      msg.className = "scoreboard__tile no-results";
-      msg.textContent = `No teams found matching "${this.searchInput.value}"`;
-      this.scoreboardContent.appendChild(msg);
+      this.renderNoResultsMessage();
       return;
     }
 
@@ -132,6 +129,14 @@ class App {
         this.renderTable(filteredData);
       }, 500);
     });
+  }
+
+  renderNoResultsMessage() {
+    const msg = document.createElement("div");
+    msg.className = "scoreboard__tile no-results";
+    msg.innerHTML = `<div class="no-results__image"><img src="assets/svg/soccer-icon.svg" alt="No results"></div>
+      <div class="no-results__message">No teams found matching "${this.searchInput.value}"</div>`;
+    this.scoreboardContent.appendChild(msg);
   }
 
   async fetchData() {
