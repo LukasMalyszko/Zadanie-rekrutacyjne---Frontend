@@ -40,6 +40,12 @@
     transform: translateY(-50%);
     fill: $gray-300;
   }
+  
+  &__close-icon {
+    cursor: pointer;
+    color: $gray-300;
+    font-size: 24px;
+  }
 
   .decor {
     position: absolute;

@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 class App {
   constructor() {
     this.scoreboardContent = document.querySelector(".scoreboard");
+    this.searchInput = document.querySelector(".header__search-input");
   }
 
   renderSkeletonTiles(count = 5) {
@@ -34,10 +35,20 @@ class App {
     }
   }
 
-  renderTable(data) {
-    const tiles = this.scoreboardContent.querySelectorAll('.scoreboard__tile');
-    for (const team of data.table) {
-      const tile = tiles[team.intRank - 1];
+  renderTable(teams) {
+    this.scoreboardContent.innerHTML = "";
+
+    if (!teams.length) {
+      const msg = document.createElement("div");
+      msg.className = "scoreboard__tile no-results";
+      msg.textContent = `No teams found matching "${this.searchInput.value}"`;
+      this.scoreboardContent.appendChild(msg);
+      return;
+    }
+
+    teams.forEach(team => {
+      const tile = document.createElement("div");
+      tile.className = "scoreboard__tile";
       tile.innerHTML = `
         <div class="scoreboard__top">
           <div class="scoreboard__side">
@@ -67,16 +78,15 @@ class App {
             <span class="label ellipsis">Goals difference:</span> <span class="score">${team.intGoalDifference}</span>
           </div>
         </div>
-
-    `;
-      this.showBar(team);
-      this.colorForm(team);
+      `;
+      this.showBar(team, tile);
+      this.colorForm(team, tile);
       this.scoreboardContent.appendChild(tile);
-    }
+    });
   }
 
-  showBar(team) {
-    const bar = document.querySelector('.scoreboard__bar');
+  showBar(team, tile) {
+    const bar = tile.querySelector('.scoreboard__bar');
     const total = team.intPlayed;
     ['wins', 'draws', 'losses'].forEach((type, i) => {
       const value = [team.intWin, team.intDraw, team.intLoss][i];
@@ -85,14 +95,42 @@ class App {
     });
   }
 
-  colorForm(team) {
-    const formView = document.querySelector('.scoreboard__form-view');
+  colorForm(team, tile) {
+    const formView = tile.querySelector('.scoreboard__form-view');
     const teamForm = team.strForm.split('').reverse();
     teamForm.forEach((char) => {
       const span = document.createElement('span');
       span.className = (char === 'W') ? 'wins' : (char === 'D') ? 'draws' : 'losses';
       span.textContent = char;
       formView.appendChild(span);
+    });
+  }
+
+  iconState() {
+    const icon = document.querySelector('.header__search-icon');
+    if (this.searchInput.value) {
+      icon.innerHTML = '&times;';
+      icon.classList.add('header__close-icon');
+      icon.onclick = () => {
+        this.searchInput.value = '';
+        icon.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'>\
+                            <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0'/>\
+                          </svg>";
+        window.location.reload(); // Reload to simulate resetting the table just for simplicity
+      };
+    }
+  }
+
+  async searchTeam() {
+    const data = await this.fetchData();
+    this.searchInput.addEventListener('input', (e) => {
+      this.iconState();
+      this.renderSkeletonTiles();
+      const searchTerm = e.target.value.toLowerCase();
+      const filteredData = data.table.filter(team => team.strTeam.toLowerCase().includes(searchTerm));
+      setTimeout(() => {
+        this.renderTable(filteredData);
+      }, 500);
     });
   }
 
@@ -117,13 +155,13 @@ class App {
     const onScroll = async () => {
       const skeleton = document.querySelectorAll('.skeleton');
       
-      window.removeEventListener('scroll', onScroll);
       const data = await this.fetchData();
       if (data) {
         skeleton.forEach(el => el.remove());
-        this.renderTable(data);
+        this.renderTable(data.table);
       }
     };
     window.addEventListener('scroll', onScroll, { once: true });
+    this.searchTeam();
   }
 }

@@ -1062,6 +1062,12 @@ a:hover {
 .scoreboard__tile .losses {
   background-color: #f45b69;
 }
+.scoreboard__tile .no-results {
+  padding: 20px;
+  text-align: center;
+  font-size: 16px;
+  height: 136px;
+}
 .scoreboard__top {
   display: flex;
   justify-content: space-between;
@@ -1286,6 +1292,11 @@ a:hover {
   right: 20px;
   transform: translateY(-50%);
   fill: #cbd5e1;
+}
+.header__close-icon {
+  cursor: pointer;
+  color: #cbd5e1;
+  font-size: 24px;
 }
 .header .decor {
   position: absolute;
