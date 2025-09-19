@@ -1098,7 +1098,6 @@ a:hover {
   margin-bottom: 20px;
 }
 .scoreboard__tile {
-  padding: 16px 16px 16px 0;
   background-color: #fff;
   border-radius: 16px;
   box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.1);
@@ -1106,6 +1105,11 @@ a:hover {
 .scoreboard__top {
   display: flex;
   justify-content: space-between;
+  padding: 16px 16px 16px 0;
+}
+.scoreboard__top .right-align {
+  max-width: 500px;
+  width: 100%;
 }
 .scoreboard__side {
   display: flex;
@@ -1162,9 +1166,29 @@ a:hover {
 .scoreboard__bar .losses {
   background-color: #f45b69;
 }
+.scoreboard__bar-detail {
+  font-size: 14px;
+  line-height: 20px;
+  max-width: 112px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.scoreboard__points {
+  background-color: #2951f7;
+  border-radius: 16px;
+  padding: 8px 16px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: center;
+  color: #fff;
+  max-width: 114px;
+  width: 100%;
+}
 .scoreboard__footer {
   display: flex;
-  margin-top: 8px;
+  border-top: 1px solid #cbd5e1;
 }
 
 .skeleton {
@@ -1172,6 +1196,7 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  padding: 16px 16px 16px 0;
 }
 .skeleton__side {
   display: flex;

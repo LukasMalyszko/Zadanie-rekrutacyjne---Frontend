@@ -71,7 +71,6 @@
   }
 
   &__tile {
-    padding: 16px 16px 16px 0;
     background-color: $white;
     border-radius: $border-radius;
     box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.1);
@@ -80,6 +79,13 @@
   &__top {
     display: flex;
     justify-content: space-between;
+    padding: 16px 16px 16px 0;
+
+
+    .right-align {
+      max-width: 500px;
+      width: 100%;
+    }
   }
 
   &__side {
@@ -103,8 +109,8 @@
   }
 
   &__badge {
-    width: 48px;
-    height: 48px;
+    width: $icon-size-lg;
+    height: $icon-size-lg;
     border-radius: 50%;
     object-fit: cover;
     border: $border-width solid $border-color;
@@ -146,9 +152,31 @@
       background-color: $losses;
     }
   }
-  
+
+  &__bar-detail {
+    font-size: 14px;
+    line-height: 20px;
+    max-width: 112px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__points {
+    background-color: $blue-600;
+    border-radius: $border-radius;
+    padding: 8px 16px;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    line-height: $line-height-l;
+    text-align: center;
+    color: $white;
+    max-width: 114px;
+    width: 100%;
+  }
+
   &__footer {
     display: flex;
-    margin-top: 8px;
+    border-top: $border-width solid $border-color;
   }
 }

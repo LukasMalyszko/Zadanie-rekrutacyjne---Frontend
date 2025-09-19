@@ -47,9 +47,9 @@ class App {
               </div>
               <div class="scoreboard__name">${team.strTeam}</div>
           </div>
-          <div class="scoreboard__side">
+          <div class="scoreboard__side right-align">
               <div class="scoreboard__bar"><span class="wins"></span> <span class="draws"></span> <span class="losses"></span></div>
-              <div class="scoreboard__bar-detail">W:${team.intWin} D:${team.intDraw} L:${team.intLoss}</div>
+              <div class="scoreboard__bar-detail"><span>W: ${team.intWin}</span> <span>D: ${team.intDraw}</span> <span>L: ${team.intLoss}</span></div>
               <div class="scoreboard__points">${team.intPoints} PTS</div>
           </div>
         </div>
