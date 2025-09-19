@@ -58,13 +58,13 @@ class App {
             Form: <div class="scoreboard__form-view"></div>
           </div>
           <div class="scoreboard__goals footer-item">
-            Goals for: ${team.intGoalsFor}
+            Goals for: <span class="score">${team.intGoalsFor}</span>
           </div>
           <div class="scoreboard__goals footer-item">
-            Goals against: ${team.intGoalsAgainst}
+            Goals against: <span class="score">${team.intGoalsAgainst}</span>
           </div>
           <div class="scoreboard__goals footer-item">
-            Goals difference: ${team.intGoalDifference}
+            Goals difference: <span class="score">${team.intGoalDifference}</span>
           </div>
         </div>
 

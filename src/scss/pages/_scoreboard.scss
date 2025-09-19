@@ -38,7 +38,7 @@
     position: absolute;
     z-index: 1;
     top: 50%;
-    right: 16px;
+    right: 20px;
     transform: translateY(-50%);
     fill: $gray-300;
   }
@@ -65,7 +65,7 @@
   &__content {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 15px;
     margin-bottom: 20px;
   }
 
@@ -94,8 +94,9 @@
 
 
     .right-align {
-      max-width: 500px;
+      max-width: 515px;
       width: 100%;
+      gap: 16px;
     }
   }
 
@@ -117,6 +118,7 @@
     justify-content: center;
     font-size: $font-size-sm;
     line-height: $line-height-sm;
+    margin-top: 10px;
   }
 
   &__badge {
@@ -162,7 +164,7 @@
   }
 
   &__points {
-    background-color: $blue-600;
+    background-color: $blue-500;
     border-radius: $border-radius-sm;
     padding: 8px 16px;
     font-size: $font-size-lg;
@@ -170,14 +172,14 @@
     line-height: $line-height-l;
     text-align: center;
     color: $white;
-    max-width: 114px;
+    max-width: 144px;
     width: 100%;
   }
 
   &__footer {
     display: flex;
     border-top: $border-width solid $border-color;
-    gap: 4px;
+    gap: 8px;
     padding: 8px 16px;
 
     .footer-item {
@@ -213,6 +215,21 @@
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+  }
+
+  &__goals {
+    max-width: 248px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .score {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
+      line-height: $line-height-l;
+      color: $blue-600;
     }
   }
 }
