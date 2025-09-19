@@ -76,17 +76,12 @@ class App {
 
   showBar(team) {
     const bar = document.querySelector('.scoreboard__bar');
-    const wins = bar.querySelector('.wins');
-    const draws = bar.querySelector('.draws');
-    const losses = bar.querySelector('.losses');
     const total = team.intPlayed;
-    const winsPercent = (team.intWin / total) * 100;
-    const drawsPercent = (team.intDraw / total) * 100;
-    const lossesPercent = (team.intLoss / total) * 100;
-
-    wins.style.width = `${winsPercent}%`;
-    draws.style.width = `${drawsPercent}%`;
-    losses.style.width = `${lossesPercent}%`;
+    ['wins', 'draws', 'losses'].forEach((type, i) => {
+      const value = [team.intWin, team.intDraw, team.intLoss][i];
+      const el = bar.querySelector(`.${type}`);
+      if (el) el.style.width = `${(value / total) * 100}%`;
+    });
   }
 
   async fetchData() {
@@ -95,10 +90,9 @@ class App {
         "https://www.thesportsdb.com/api/v1/json/123/lookuptable.php?l=4328&s=2024-2025"
       );
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        console.error("Network response was not ok");
       }
       const data = await response.json();
-      console.log(data);
       return data;
     } catch (error) {
       console.error("Fetch error:", error);

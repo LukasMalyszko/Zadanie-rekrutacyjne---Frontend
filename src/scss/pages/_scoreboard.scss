@@ -1,5 +1,4 @@
 .scoreboard {
-
   &__header {
     display: flex;
     flex-direction: column;
@@ -74,6 +73,18 @@
     background-color: $white;
     border-radius: $border-radius;
     box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.1);
+
+    .wins {
+      background-color: $wins;
+    }
+
+    .draws {
+      background-color: $draws;
+    }
+
+    .losses {
+      background-color: $losses;
+    }
   }
 
   &__top {
@@ -139,18 +150,6 @@
     span {
       height: 100%;
     }
-
-    .wins {
-      background-color: $wins;
-    }
-
-    .draws {
-      background-color: $draws;
-    }
-
-    .losses {
-      background-color: $losses;
-    }
   }
 
   &__bar-detail {
@@ -178,5 +177,24 @@
   &__footer {
     display: flex;
     border-top: $border-width solid $border-color;
+    gap: 4px;
+    padding: 8px 16px;
+
+    div {
+      background-color: $blue-100;
+      font-size: $font-size-sm;
+      line-height: $line-height-sm;
+      padding: 4px 8px;
+      border-radius: $border-radius-sm;
+    }
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    max-width: 340px;
+    width: 100%;
   }
 }

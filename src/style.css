@@ -1102,6 +1102,15 @@ a:hover {
   border-radius: 16px;
   box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.1);
 }
+.scoreboard__tile .wins {
+  background-color: #0ebca7;
+}
+.scoreboard__tile .draws {
+  background-color: #94a3b8;
+}
+.scoreboard__tile .losses {
+  background-color: #f45b69;
+}
 .scoreboard__top {
   display: flex;
   justify-content: space-between;
@@ -1157,15 +1166,6 @@ a:hover {
 .scoreboard__bar span {
   height: 100%;
 }
-.scoreboard__bar .wins {
-  background-color: #0ebca7;
-}
-.scoreboard__bar .draws {
-  background-color: #94a3b8;
-}
-.scoreboard__bar .losses {
-  background-color: #f45b69;
-}
 .scoreboard__bar-detail {
   font-size: 14px;
   line-height: 20px;
@@ -1189,6 +1189,23 @@ a:hover {
 .scoreboard__footer {
   display: flex;
   border-top: 1px solid #cbd5e1;
+  gap: 4px;
+  padding: 8px 16px;
+}
+.scoreboard__footer div {
+  background-color: #ebefff;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+.scoreboard__form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  max-width: 340px;
+  width: 100%;
 }
 
 .skeleton {
