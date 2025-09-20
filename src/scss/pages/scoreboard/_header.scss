@@ -8,7 +8,8 @@
   gap: 24px;
   position: relative;
   z-index: 0;
-  margin-bottom: 15px;
+  margin: 0 auto 15px;
+  overflow: hidden;
 
   &__title {
     font-size: $font-size-xl;
@@ -51,7 +52,7 @@
     font-size: 24px;
   }
 
-  .decor {
+  &--decor {
     position: absolute;
     z-index: -1;
     top: 0;
@@ -69,4 +70,15 @@
   &__decor-right {
     right: 0;
   }
+
+  @include media-breakpoint-only(sm) {
+    &__decor-left {
+      display: none;
+    }
+
+    &__decor-right {
+      right: -185px;
+    }
+  }
+
 }
