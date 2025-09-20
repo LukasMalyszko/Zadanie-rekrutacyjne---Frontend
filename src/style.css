@@ -1282,12 +1282,16 @@ a:hover {
 .header__search-icon {
   position: absolute;
   z-index: 1;
-  top: 50%;
+  top: 55%;
   right: 20px;
   transform: translateY(-50%);
   fill: #cbd5e1;
 }
 .header__close-icon {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 20px;
   cursor: pointer;
   color: #cbd5e1;
   font-size: 24px;

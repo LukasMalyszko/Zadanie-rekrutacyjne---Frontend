@@ -35,13 +35,17 @@
   &__search-icon {
     position: absolute;
     z-index: 1;
-    top: 50%;
+    top: 55%;
     right: 20px;
     transform: translateY(-50%);
     fill: $gray-300;
   }
   
   &__close-icon {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 20px;
     cursor: pointer;
     color: $gray-300;
     font-size: 24px;

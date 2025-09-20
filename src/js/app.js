@@ -108,9 +108,10 @@ class App {
 
   iconState() {
     const icon = document.querySelector('.header__search-icon');
-    if (this.searchInput.value) {
+    if (this.searchInput.value && icon) {
       icon.innerHTML = '&times;';
       icon.classList.add('header__close-icon');
+      icon.classList.remove('header__search-icon');
       icon.onclick = () => {
         this.searchInput.value = '';
         icon.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'>\
