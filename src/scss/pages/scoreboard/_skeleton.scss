@@ -68,20 +68,25 @@
         "bar points"
         "matches points";
       justify-items: end;
+      justify-content: end;
+      gap: 0 16px;
     }
 
     &__bar {
       grid-area: bar;
+      width: 262px;
     }
+
     &__matches {
       grid-area: matches;
     }
+
     &__points {
       grid-area: points;
     }
   }
-
-  @include media-breakpoint-only(xs) {
+  
+  @include media-breakpoint-down(xs) {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
@@ -95,13 +100,13 @@
     }
 
     &__bar {
-      // width: 100%;
-      // max-width: 224px;
+      width: 280px;
     }
+  }
 
-    &__points {
-      // width: 100%;
-      // max-width: 144px;
+  @media (max-width: 360px) {
+    &__bar {
+      width: 230px;
     }
   }
 }

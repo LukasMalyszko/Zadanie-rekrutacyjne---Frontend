@@ -81,11 +81,11 @@
     }
 
     &__decor-right {
-      right: -185px;
+      right: -187px;
     }
   }
 
-  @include media-breakpoint-down(xs) {
+  @include media-breakpoint-down(xxs) {
     padding: 16px 0 0;
     gap: 10px;
 
@@ -100,6 +100,10 @@
     &__search{
       background-color: $blue-200;
       padding: 8px;
+    }
+
+    &__close-icon {
+      top: 10px;
     }
   }
 }

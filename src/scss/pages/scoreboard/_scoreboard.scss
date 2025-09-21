@@ -177,7 +177,7 @@
     }
   }
 
-  @include media-breakpoint-only(sm) {
+  @include media-breakpoint-down(sm) {
     &__side--right {
       display: grid;
       grid-template-areas:
@@ -201,11 +201,12 @@
     }
 
     &__form {
-      min-width: 340px;
+      width: 340px;
     }
 
     &__goals {
-      min-width: 160px;
+      width: 160px;
+      flex-shrink: 0;
     }
 
     &__bar {
@@ -218,6 +219,38 @@
 
     &__points {
       grid-area: points;
+    }
+  }
+
+  @include media-breakpoint-down(xs) {
+    &__top {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &__side--right {
+      grid-template-areas:
+      "bar"
+      "matches"
+      "points";
+      max-width: 100%;
+      width: 100%;
+      gap: 8px 0;
+    }
+
+    &__bar {
+      width: 280px;
+    }
+
+    &__form {
+      max-width: 220px;
+      min-width: none;
+    }
+  }
+
+  @media (max-width: 360px) {
+    &__bar {
+      width: 230px;
     }
   }
 }

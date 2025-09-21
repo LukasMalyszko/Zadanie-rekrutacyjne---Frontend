@@ -10,79 +10,82 @@ class App {
   constructor() {
     this.scoreboardContent = document.querySelector(".scoreboard");
     this.searchInput = document.querySelector(".header__search-input");
+    this.debounceTimeout = null;
   }
 
   renderSkeletonTiles(count = 5) {
     this.scoreboardContent.innerHTML = "";
     for (let i = 0; i < count; i++) {
-      const tile = document.createElement("div");
-      tile.className = "scoreboard__tile";
-      tile.innerHTML = `
-        <div class="skeleton">
-            <div class="skeleton__side">
-                <div class="skeleton__rank skeleton__element"></div>
-                <div class="skeleton__badge skeleton__element"></div>
-                <div class="skeleton__name skeleton__element"></div>
-            </div>
-            <div class="skeleton__side skeleton__side--right">
-                <div class="skeleton__bar skeleton__element"></div>
-                <div class="skeleton__matches skeleton__element"></div>
-                <div class="skeleton__points skeleton__element"></div>
-            </div>
-        </div>
-    `;
-      this.scoreboardContent.appendChild(tile);
+      this.scoreboardContent.appendChild(this.createSkeletonTile());
     }
+  }
+
+  createSkeletonTile() {
+    const tile = document.createElement("div");
+    tile.className = "scoreboard__tile";
+    tile.innerHTML = `
+      <div class="skeleton">
+        <div class="skeleton__side">
+          <div class="skeleton__rank skeleton__element"></div>
+          <div class="skeleton__badge skeleton__element"></div>
+          <div class="skeleton__name skeleton__element"></div>
+        </div>
+        <div class="skeleton__side skeleton__side--right">
+          <div class="skeleton__bar skeleton__element"></div>
+          <div class="skeleton__matches skeleton__element"></div>
+          <div class="skeleton__points skeleton__element"></div>
+        </div>
+      </div>
+    `;
+    return tile;
   }
 
   renderTable(teams) {
     this.scoreboardContent.innerHTML = "";
-
-    if (!teams) {
-      this.renderErrorMessage();
-      return;
-    } else if (!teams.length) {
-      this.renderNoResultsMessage();
-      return;
-    }
-
+    if (!teams) return this.renderErrorMessage();
+    if (!teams.length) return this.renderNoResultsMessage();
     teams.forEach(team => {
-      const tile = document.createElement("div");
-      tile.className = "scoreboard__tile";
-      tile.innerHTML = `
-        <div class="scoreboard__top">
-          <div class="scoreboard__side">
-              <div class="scoreboard__rank">${team.intRank}</div>
-              <div class="scoreboard__badge">
-                <img src="${team.strBadge}" alt="${team.strTeam} badge">
-              </div>
-              <div class="scoreboard__name ellipsis">${team.strTeam}</div>
-          </div>
-          <div class="scoreboard__side scoreboard__side--right">
-              <div class="scoreboard__bar"><span class="wins"></span> <span class="draws"></span> <span class="losses"></span></div>
-              <div class="scoreboard__matches"><span>W: ${team.intWin}</span> <span>D: ${team.intDraw}</span> <span>L: ${team.intLoss}</span></div>
-              <div class="scoreboard__points">${team.intPoints} PTS</div>
-          </div>
-        </div>
-        <div class="scoreboard__footer">
-          <div class="scoreboard__form footer-item">
-            <span class="label ellipsis">Form:</span> <div class="scoreboard__form-view"></div>
-          </div>
-          <div class="scoreboard__goals footer-item">
-            <span class="label ellipsis">Goals for:</span> <span class="score">${team.intGoalsFor}</span>
-          </div>
-          <div class="scoreboard__goals footer-item">
-            <span class="label ellipsis">Goals against:</span> <span class="score">${team.intGoalsAgainst}</span>
-          </div>
-          <div class="scoreboard__goals footer-item">
-            <span class="label ellipsis">Goals difference:</span> <span class="score">${team.intGoalDifference}</span>
-          </div>
-        </div>
-      `;
-      this.showBar(team, tile);
-      this.colorForm(team, tile);
+      const tile = this.createTeamTile(team);
       this.scoreboardContent.appendChild(tile);
     });
+  }
+
+  createTeamTile(team) {
+    const tile = document.createElement("div");
+    tile.className = "scoreboard__tile";
+    tile.innerHTML = `
+      <div class="scoreboard__top">
+        <div class="scoreboard__side">
+          <div class="scoreboard__rank">${team.intRank}</div>
+          <div class="scoreboard__badge">
+            <img src="${team.strBadge}" alt="${team.strTeam} badge">
+          </div>
+          <div class="scoreboard__name ellipsis">${team.strTeam}</div>
+        </div>
+        <div class="scoreboard__side scoreboard__side--right">
+          <div class="scoreboard__bar"><span class="wins"></span> <span class="draws"></span> <span class="losses"></span></div>
+          <div class="scoreboard__bar-detail"><span>W: ${team.intWin}</span> <span>D: ${team.intDraw}</span> <span>L: ${team.intLoss}</span></div>
+          <div class="scoreboard__points">${team.intPoints} PTS</div>
+        </div>
+      </div>
+      <div class="scoreboard__footer">
+        <div class="scoreboard__form footer-item">
+          <span class="label ellipsis">Form:</span> <div class="scoreboard__form-view"></div>
+        </div>
+        <div class="scoreboard__goals footer-item">
+          <span class="label ellipsis">Goals for:</span> <span class="score">${team.intGoalsFor}</span>
+        </div>
+        <div class="scoreboard__goals footer-item">
+          <span class="label ellipsis">Goals against:</span> <span class="score">${team.intGoalsAgainst}</span>
+        </div>
+        <div class="scoreboard__goals footer-item">
+          <span class="label ellipsis">Goals difference:</span> <span class="score">${team.intGoalDifference}</span>
+        </div>
+      </div>
+    `;
+    this.showBar(team, tile);
+    this.colorForm(team, tile);
+    return tile;
   }
 
   showBar(team, tile) {
@@ -114,12 +117,19 @@ class App {
       icon.classList.remove('header__search-icon');
       icon.onclick = () => {
         this.searchInput.value = '';
+        icon.classList.add('header__search-icon');
+        icon.classList.remove('header__close-icon');
         icon.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'>\
                             <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0'/>\
                           </svg>";
-        window.location.reload(); // Reload to simulate resetting the table just for simplicity
+        this.fetchData().then(data => this.renderTable(data.table));
       };
     }
+  }
+
+  debounceSearch(callback, delay = 500) {
+    clearTimeout(this.debounceTimeout);
+    this.debounceTimeout = setTimeout(callback, delay);
   }
 
   async searchTeam() {
@@ -128,10 +138,10 @@ class App {
       this.iconState();
       this.renderSkeletonTiles();
       const searchTerm = e.target.value.toLowerCase();
-      const filteredData = data.table.filter(team => team.strTeam.toLowerCase().includes(searchTerm));
-      setTimeout(() => {
+      this.debounceSearch(() => {
+        const filteredData = data.table.filter(team => team.strTeam.toLowerCase().includes(searchTerm));
         this.renderTable(filteredData);
-      }, 500);
+      });
     });
   }
 
@@ -171,7 +181,6 @@ class App {
     this.renderSkeletonTiles();
     const onScroll = async () => {
       const skeleton = document.querySelectorAll('.skeleton');
-      
       const data = await this.fetchData();
       if (data) {
         skeleton.forEach(el => el.remove());
