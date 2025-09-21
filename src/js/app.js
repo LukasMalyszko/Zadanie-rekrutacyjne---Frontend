@@ -64,7 +64,7 @@ class App {
         </div>
         <div class="scoreboard__side scoreboard__side--right">
           <div class="scoreboard__bar"><span class="wins"></span> <span class="draws"></span> <span class="losses"></span></div>
-          <div class="scoreboard__bar-detail"><span>W: ${team.intWin}</span> <span>D: ${team.intDraw}</span> <span>L: ${team.intLoss}</span></div>
+          <div class="scoreboard__matches"><span>W: ${team.intWin}</span> <span>D: ${team.intDraw}</span> <span>L: ${team.intLoss}</span></div>
           <div class="scoreboard__points">${team.intPoints} PTS</div>
         </div>
       </div>
