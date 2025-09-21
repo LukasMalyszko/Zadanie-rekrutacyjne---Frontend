@@ -71,7 +71,11 @@
     right: 0;
   }
 
-  @include media-breakpoint-only(sm) {
+  &__decor--mobile {
+    display: none;
+  }
+
+  @include media-breakpoint-down(sm) {
     &__decor-left {
       display: none;
     }
@@ -81,4 +85,21 @@
     }
   }
 
+  @include media-breakpoint-down(xs) {
+    padding: 16px 0 0;
+    gap: 10px;
+
+    &__decor--mobile {
+      display: block;
+    }
+    
+    &--decor {
+      display: none;
+    }
+    
+    &__search{
+      background-color: $blue-200;
+      padding: 8px;
+    }
+  }
 }

@@ -60,4 +60,48 @@
     width: 144px;
     border-radius: $border-radius-sm;
   }
+
+  @include media-breakpoint-only(sm) {
+    &__side--right {
+      display: grid;
+      grid-template-areas:
+        "bar points"
+        "matches points";
+      justify-items: end;
+    }
+
+    &__bar {
+      grid-area: bar;
+    }
+    &__matches {
+      grid-area: matches;
+    }
+    &__points {
+      grid-area: points;
+    }
+  }
+
+  @include media-breakpoint-only(xs) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 16px 16px 0;
+
+    &__side--right {
+      flex-direction: column;
+      align-items: flex-end;
+      width: 100%;
+      gap: 8px;
+    }
+
+    &__bar {
+      // width: 100%;
+      // max-width: 224px;
+    }
+
+    &__points {
+      // width: 100%;
+      // max-width: 144px;
+    }
+  }
 }

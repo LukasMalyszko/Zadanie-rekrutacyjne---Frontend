@@ -1,3 +1,5 @@
 .wrapper {
-    margin: 0 16px 16px;
+  @include media-breakpoint-down(md) {
+		padding: 0 $flexboxgrid-outer-margin;
+  }
 }

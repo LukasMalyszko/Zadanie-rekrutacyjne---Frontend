@@ -32,19 +32,16 @@
     display: flex;
     justify-content: space-between;
     padding: 16px 16px 16px 0;
+  }
 
-
-    .right-align {
-      max-width: 515px;
-      width: 100%;
-      gap: 16px;
-    }
+  &__side--right {
+    max-width: 515px;
+    width: 100%;
   }
 
   &__side {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 18px;
   }
 
@@ -96,7 +93,7 @@
     }
   }
 
-  &__bar-detail {
+  &__matches {
     font-size: 14px;
     line-height: 20px;
     max-width: 112px;
@@ -145,6 +142,7 @@
     gap: 10px;
     max-width: 340px;
     width: 100%;
+    flex-shrink: 0;
   }
 
   &__form-view {
@@ -177,7 +175,49 @@
       line-height: $line-height-l;
       color: $blue-600;
     }
+  }
 
-    
+  @include media-breakpoint-only(sm) {
+    &__side--right {
+      display: grid;
+      grid-template-areas:
+        "bar points"
+        "matches points";
+      justify-items: end;
+      max-width: 440px;
+      gap: 0 4px;
+    }
+
+    &__footer {
+      overflow-x: scroll;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+        width: 0;
+        background: transparent;
+      }
+    }
+
+    &__form {
+      min-width: 340px;
+    }
+
+    &__goals {
+      min-width: 160px;
+    }
+
+    &__bar {
+      grid-area: bar;
+    }
+
+    &__matches {
+      grid-area: matches;
+    }
+
+    &__points {
+      grid-area: points;
+    }
   }
 }
